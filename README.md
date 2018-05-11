@@ -33,7 +33,7 @@ create the following tables
 - stop_time descripes arrival time
 - line descripes station line
 
-**Now I'm showing my approuch**:
+**Now I'm showing my approach**:
 
 - Get start_id and end_id from the user
 - get their ID from the station's table
