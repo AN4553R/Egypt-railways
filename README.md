@@ -9,7 +9,7 @@
 
 **My idea is that**:
 
-create the following tables
+I see these three tables are the minimum number of parameters that descripes the whole application
 
 `trains`:
 
