@@ -12,50 +12,73 @@
     </div>
     <h3 style="margin-left: 5%;">Egypt Trinas - قطارات مصر</h3>
 </div>
-<?php
-include_once('dbclass.php');
 
-if(isset($_GET['submit']))
-{
-    echo "<h2 class='header' style='text-align: center'>"."من ".$_GET['From']." ";
-    echo "لـ ".$_GET['To'];
-    echo " يوجد ";
-    $from=$_GET['From'];
-    $to=$_GET['To'];
-    $from_id=$db->getRow("select * from stations where name='$from'");
-
-    $to_id=$db->getRow("select * from stations where name='$to'");
-
-    $FID=$from_id['id'];
-    $TID=$to_id['id'];
-    $rows=$db->getRows("select * from stops where start_id <= $FID AND $TID <= end_id");
-    if(!$rows)
-        die("Lack of Data, insert more in the 'stops' table");
-    $sum=0;
-    foreach ($rows as $row)
-    {
-        $sum++;
-    }
-    echo $sum." قطار "."<br>";
-    echo "</h2>";
-}
-else
-    die("Error in the form");
-?>
-<br clear="both">
-<div class="body" dir="rtl">
-    <div class="square" style="margin-top: 20px">
-
-    </div>
-<?php
-    foreach ($rows as $row)
-    {
-        echo $row['train_id'].str_repeat('&nbsp;', 20).$row['start_id'].str_repeat('&nbsp;', 20);
-        echo $row['end_id'].str_repeat('&nbsp;', 20).$row['stop_time'].str_repeat('&nbsp;', 20);
-        echo $row['line']."<br>";
-
-    }
-?>
+<div class="res_head">
+    <?php
+    include("dbclass.php");
+    echo "<p style='margin-left: 5px;text-align: center;font-size: xx-large'>";
+    echo "من ".$_GET['From']." لـ ".$_GET['To']." يوجد ";
+    $rows=$db->getRows("select * from stops");
+    $cnt=0;
+    foreach ($rows as $r)$cnt++;
+    echo $cnt." قطار ";
+    echo "</p>";
+    $names="";
+    ?>
 </div>
+
+</div>
+
+    <div style="margin-left: 5%">
+        <?php
+        $sentence=array('قطار','قيام','وصول','المدة','السرعة', 'الدرجة', 'يقف في');
+        for($i=6;$i>=0;$i--)
+            echo "<div class='square'><p style='color: white;font-size: xx-large;text-align: center'>$sentence[$i]</p></div>";
+        ?>
+    </div>
+    <br clear="both">
+    <div class="note" dir="rtl">
+        <p style="font-size: xx-large;text-align: center;padding-top: 2.5%"><span style="color: red;font-size:xx-large;font-weight: bold">ملاحظة : </span> يمكنك معرفة محطات الوقوف التي ستمر عليها في القطار عن طريق اللمس على الزر</p>
+    </div>
+    <div style="margin-left: 10%" dir="rtl">
+        <?php
+            foreach ($rows as $row){
+                $id=$row['train_id'];
+                echo "<div class='square2'>".$id."</div>";
+                $sel=$db->getRow("select * from trains where id = $id");
+                $leaving=$sel['leaving'];
+                echo "<div class='square2' style='float: right;margin-top: -12.5%;margin-right: 20.4%'>".$leaving."</div>";
+                $arrival=$sel['arrival'];
+                echo "<div class='square2' style='float: right;margin-top: -12.5%;margin-right: .8%'>".$arrival."</div>";
+                $duration=$sel['duration'];
+                echo "<div class='square2' style='float: right;margin-top: -12.5%;margin-right: .8%'>".$duration."</div>";
+                $velocity=$sel['velocity'];
+                echo "<div class='square2' style='float: right;margin-top: -12.5%;margin-right: 1.4%'>".$velocity."</div>";
+                $class=$sel['class'];
+                echo "<div class='square2' style='float: right;margin-top: -12.5%;margin-right: 1.4%'>".$class."</div>";
+
+                $q=$db->getRow("select * from stops where train_id = $id");
+                $start=$q['start_id'];
+                $end=$q['end_id'];
+                $stops=$db->getRows("select * from stations where id >= $start and id <= $end");
+                $send=array();
+                $item="";
+                foreach ($stops as $push){array_push($send,$push['name']);$item.=$push["name"]."<br>";}
+                $item.="*";
+                $names.=$item;
+                echo "<div class='square2' style='float: left;margin-top: -12.5%;margin-left:-6%'>"."<button id='number' class='btn' onclick='gotem($id)'>".count($send)."</button></div>";
+            }
+        ?>
+    </div>
+    <script  type="text/javascript">
+        function gotem(x) {
+            var str = "<?php echo ($names)?>".split("*");
+            var station=str[x/10-1].split("<br>").join("\n");
+            if(station.length==0)
+                alert("لا يمر هذا القطار بأي من المحطات المرغوبة")
+             else alert(station);
+        }
+    </script>
+
 </body>
 </html>
