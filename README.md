@@ -40,3 +40,7 @@ three tables to descripe the whole application
 - search in the stops table about all the trains
 that leaves from a station with ID less that or equal the start_id, arrive to a station  with ID bigger than or equal the end_id
 and from the required train's class
+
+![screen 1](/AA.png)
+![screen 2](/subA.png)
+![screen 3](/A.png)
