@@ -9,7 +9,7 @@
 
 **My idea is that**:
 
-I see these three tables are the minimum number of parameters that descripes the whole application
+three tables to descripe the whole application
 
 `trains`:
 
@@ -38,5 +38,5 @@ I see these three tables are the minimum number of parameters that descripes the
 - Get start_id and end_id from the user
 - get their ID from the station's table
 - search in the stops table about all the trains
-that leaves from a station with ID less that or equal the start_id
-and arrive to a station  with ID bigger than or equal the end_id
+that leaves from a station with ID less that or equal the start_id, arrive to a station  with ID bigger than or equal the end_id
+and from the required train's class
