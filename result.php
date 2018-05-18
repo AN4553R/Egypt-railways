@@ -38,7 +38,7 @@
     </div>
     <br clear="both">
     <div class="note" dir="rtl">
-        <p style="font-size: xx-large;text-align: center;padding-top: 2.5%"><span style="color: red;font-size:xx-large;font-weight: bold">ملاحظة : </span> يمكنك معرفة محطات الوقوف التي ستمر عليها في القطار عن طريق اللمس على الزر</p>
+        <p style="font-size: xx-large;text-align: center;padding-top: 2.5%"><span style="color: red;font-size:xx-large;font-weight: bold">ملاحظة : </span> يمكنك معرفة محطات الوقوف التي ستمر عليها في القطار عن طريق الصغط على الزر</p>
     </div>
     <div style="margin-left: 10%" dir="rtl">
         <?php
