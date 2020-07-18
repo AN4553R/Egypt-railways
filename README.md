@@ -39,7 +39,7 @@ that leaves from a station with ID less that or equal the start_id, arrive to a 
 and from the required train's class
 
 <details align="center">
-    <summary align="center"><strong>Technologies</strong></summary>
+    <summary align="center"><strong>Tools and Technologies</strong></summary>
     PHP7, PDO, MySQL, HTML, CSS, Bootstrap,  JS and JQuery
 </details>
 
