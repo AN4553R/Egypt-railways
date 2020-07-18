@@ -1,13 +1,10 @@
 # Egypt railways
-**Follow this steps to use the App**
 
-- [create the database](/createDB.php)
-- [load data](/loadData.php)
-- [background pic](/thumb-1920-552786.jpg)
+## Motivation 
 
-`Egypt railways`
+Web app to query train times in Egypt
 
-**My idea is that**:
+> **Details**:
 
 three tables to descripe the whole application
 
@@ -33,13 +30,23 @@ three tables to descripe the whole application
 - stop_time descripes arrival time
 - line descripes station line
 
-**Now I'm showing my approach**:
+> **Approach**:
 
 - Get start_id and end_id from the user
 - get their ID from the station's table
 - search in the stops table about all the trains
 that leaves from a station with ID less that or equal the start_id, arrive to a station  with ID bigger than or equal the end_id
 and from the required train's class
+
+<details align="center">
+    <summary align="center"><strong>Technologies</strong></summary>
+    PHP7, PDO, MySQL, HTML, CSS, Bootstrap,  JS and JQuery
+</details>
+
+<details align="center">
+    <summary align="center"><strong>Principles/Patterns</strong></summary>
+    Single responsibility and Interface Segregation
+</details>
 
 ![screen 1](/AA.png)
 
@@ -48,3 +55,20 @@ and from the required train's class
 ![screen 3](/A.png)
 
 ![screen 3](/B.PNG)
+
+# Installation
+<center> <h2>Installation</h2> </center>
+
+Clone the repository
+```console
+foo@bar:~$ git clone https://github.com/Abdulrahmannaser/Micro-blog.git
+```
+Then run each of these files through accessing them as end points in ur local host
+
+- [create the database](/createDB.php)
+- [load data](/loadData.php)
+- [background pic](/thumb-1920-552786.jpg)
+
+<center><h2>License</h2></center>
+
+[MIT License](https://github.com/Abdulrahmannaser/Egypt-railways/blob/master/LICENSE)
